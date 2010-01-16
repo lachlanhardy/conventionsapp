@@ -32,8 +32,8 @@ module Application
     def mobile_request?
       # mobile_user_agent_patterns.any? {|r| request.headers['User-Agent'] =~ r}
       mobile_user_agent_patterns.any? {|r| 
-        haml_concat(request)
-        request.env['User-Agent'] =~ r
+        # haml_concat(request.env)
+        request.env['REQUEST_PATH/HTTP_USER_AGENT'] =~ r
         }
     end
     def mobile_user_agent_patterns
