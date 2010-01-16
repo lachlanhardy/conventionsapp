@@ -1,0 +1,50 @@
+Phase 1
+ - Set up home page for desktop and iphone
+ - Get deployed
+ - Allow users to sign via Google OpenID
+ - signin via normal OpenID ??
+ - Populate profile from web
+
+Phase 2
+ - Find networks and offer association
+  - authenticate Twitter
+  - authenticate Flickr
+ - Find contacts and offer connection
+ 
+Phase 3 
+ - Set up tweeting from within app
+  - view tweets
+  - send tweets
+  - reply to tweets
+ - Set up flickr within app
+  - view photos
+  - comment on photos
+
+Phase 4
+ - Allow checkin to sessions and events
+ - associate tweets and photos with sessions based on time
+ - FireEagle ??
+ - Show content associated with sessions
+  - eg stock/sessions/lisa-herrod/ shows the tweets and photos from her session
+  
+Phase 5
+ - Bookmarks
+  - associated commenting.
+ 
+
+Tasks to be done before launch, in priority order:
+ - confirm parity between desktop and iphone
+ - review whole site and QA
+ - get feedback from Lisa
+
+Others things to do, in priority order:
+
+ - GZIP
+ - iPhone version
+ - Generic mobile site
+ - add google sitemap
+ - CI
+ - Pass YSlow/Page Speed
+ - add webfinger http://groups.google.com/group/webfinger/browse_thread/thread/dd568ba740f515c0
+ - Set up post-commit hook action for redeploy
+ - Make error page cooler

@@ -1,0 +1,135 @@
+/*requires reset.css*/
+
+/****
+Application
+http://stock
+20100116
+
+TOC
+=Generic Rules
+  =Generic Text
+    =Links
+    =Headings
+    =Body Text
+    =Date, Times etc
+  =Generic Forms
+=Structure
+  =Header
+  =Nav
+  =Page
+    =Columns
+    =Components
+      =Archive
+      =Posts
+      =Blog
+      =Facets
+      =Tags
+      =Tagspace
+      =Tagged
+      =hcard-Lachlan-Hardy
+  =Footer
+=JS
+  =Github
+  =Flickr-pic
+  =Graph
+
+****/
+
+/* =Generic Rules */
+  /* =Generic Text */
+  blockquote {background: #fafafa; border: 1px solid #aaa; color: #444; margin: 1em; overflow: auto; padding: 0 1em 0 1em;}
+
+    blockquote:before,
+    blockquote:after {color: #aaa; font-size: 1em;}
+
+    blockquote:before {content: "start quote";}
+    blockquote:after {content: "end quote";}
+
+      blockquote cite {display: block; float: right; margin: 0 0 1em 0; width: auto;}
+  
+  q {font-size: 1.1em;}
+    
+  /* =Links */
+  a:link {color: #0066B3;}
+  a:visited {color: #464646;}
+  a:hover, a:active, a:focus {color: #FF8000;}
+
+  /* =Headings */
+  h1, h2, h3, h4, h5, h6 {font-family: "Helvetica Neue", Helvetica, Arial, FreeSans, sans-serif; margin: 1em 0 0.5em 0;}
+  h1 {font-size: 3em; margin: 0 0 0.5em 0;}
+  h2 {font-size: 2em;}
+  h3 {font-size: 1.7em;}
+  h4 {font-size: 1.5em;}
+  h5 {font-size: 1.3em;}
+  h6 {font-size: 1.1em;}
+
+  /* =Body Text */
+  article p,
+  article li,
+  article ol,
+  article ul {margin: 0 0 0.5em;}
+  article p {font-size: 1.07em; line-height: 1.5;}
+  article ul {}
+  	article ul li {font-size: 1.07em; list-style-position: inside; list-style-type: disc;}
+  article ol {}
+  	article ol li {font-size: 1.07em; list-style-position: inside; list-style-type: decimal;}
+    article ol ol,
+    article ol ul,
+    article ul ol,
+    article ul ul {margin: 0 0 0.5em 1em;}
+
+  .amp {background: #0e0e0e; color: #666; font: italic 100 1.25em Baskerville, "Goudy Old Style", "Palatino", Georgia, "Book Antiqua", serif; position: relative; top: 2px;}
+
+  /* =Dates, Times etc */
+  .date {font: 1em/1.6 Georgia, serif;}
+
+/* =Structure */
+html,
+body {height: 100%;}
+
+body {background: #fff; color: #0e0e0e; font: 62.5%/1.3 "Helvetica Neue", Helvetica, Arial, FreeSans, sans-serif; margin: 0; padding: 0;}
+
+#wrapper {min-height: 100%; overflow: hidden;}
+
+  /* =Header */
+  header.layout {background: #ff8000; color: #fff; min-height: 6em; margin: 0 0 2.8em 0; padding: 0.2em 1em 0 1em; position: relative;}
+    header.layout h1 {background: transparent; color: #fff; font: 700 5em "Courier New", monospace; left: 0.05em; letter-spacing: 0.2em; margin: 0; position: absolute; text-transform: uppercase; top: 0.46em; width: auto;}
+    header.layout h1 span,
+    header.layout h1 a {border: 0.1em solid transparent; padding: 0.1em 0.2em 0;}
+    header.layout h1 a:link,
+    header.layout h1 a:visited {background: transparent; color: #fff; text-decoration: none;}
+    header.layout h1 a:hover,
+    header.layout h1 a:active,
+    header.layout h1 a:focus {background: #fff; border: 0.1em solid #ff8000; color: #ff8000;}
+
+  /* =Nav */
+  nav {overflow: auto;}
+    nav ul {background: #000; color: #ff8000; float: left; width: auto;}
+      nav ul li {float: left; width: auto;}
+        nav ul li a,
+        nav ul li span {display: block; font-size: 1.4em; font-weight: 700; padding: 0.5em 1.1em; position:relative; z-index:1;}
+        nav ul li span {background: #000; color: #ddd;}
+        nav ul li a:link,
+        nav ul li a:visited {background: #000; color: #fff;}
+        nav ul li a:hover,
+        nav ul li a:active,
+        nav ul li a:focus {background: #ff8000; color: #fff; text-decoration: none;}
+  
+  /* =Page */
+  #page {font-size: 1.5em; margin: 0.5em 0 0 0; padding: 1em 1em 1em 0; position: relative;}
+
+    /* =Columns */    
+    section {float: left; margin: 0 0 -80em 15em; min-height: 100%; padding: 1em 0 90em 1em; position: relative; width: auto;}
+
+  /* =Footer */
+  footer.layout {background: #111; clear: both; color: #fff; font-size: 1.5em; margin: -2.4em 0 0 0; position: relative; bottom: 0; text-align: center; width: 100%;}
+    footer.layout p {border-top: 2px solid #444; padding: 0.5em;}
+      footer.layout a:link {color: #0066B3;}
+      footer.layout a:visited {color: #fff;}
+      footer.layout a:hover, 
+      footer.layout a:active, 
+      footer.layout a:focus {color: #FF8000;}
+
+/* =JS */
+html.js {}
+ 
