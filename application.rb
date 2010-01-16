@@ -28,6 +28,17 @@ module Application
       handle_fail
     end
     
+    # helper_method :mobile_request?
+    def mobile_request?
+      mobile_user_agent_patterns.any? {|r| request.headers['User-Agent'] =~ r}
+    end
+    def mobile_user_agent_patterns
+      [
+        /AppleWebKit.*Mobile/,
+        /Android.*AppleWebKit/
+      ]
+    end
+    
     # homepage
     get '/' do
       haml :index
