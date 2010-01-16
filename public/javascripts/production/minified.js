@@ -1,5 +1,5 @@
 /* For readable source code, check the 'hubs: 
-   http://github.com/lachlanhardy/stockstandard/blob/master/public/javascripts/  */
+   http://github.com/lachlanhardy/convention/blob/master/public/javascripts/  */
 
 /*
  * jQuery JavaScript Library v1.4

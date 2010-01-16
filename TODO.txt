@@ -1,6 +1,5 @@
 Phase 1
  - Set up home page for desktop and iphone
- - Get deployed
  - Allow users to sign via Google OpenID
  - signin via normal OpenID ??
  - Populate profile from web

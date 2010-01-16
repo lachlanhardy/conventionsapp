@@ -25,7 +25,7 @@ namespace :minifier do
  
   def minify(file, file_type)
     file_path = "#{file.gsub(file.split("/")[-1], "")}"
-    github_path = "http://github.com/lachlanhardy/stockstandard/blob/master/public/#{file.split("/")[1]}/"
+    github_path = "http://github.com/lachlanhardy/convention/blob/master/public/#{file.split("/")[1]}/"
     output_path = "#{file_path}minified.#{file_type}"
     
     cmd = "java -jar lib/yuicompressor-2.4.2.jar #{file} -o #{output_path}"

@@ -19,6 +19,10 @@ module Application
     configure do
       #configure_avatars(Dir.glob("public/images/userlist.yaml")[0])
     end
+    
+    before do
+      !mobile_request? ? @mobile = ".mobile" : @mobile = ""
+    end
 
     error do
       handle_fail
@@ -30,12 +34,7 @@ module Application
     
     # homepage
     get '/' do
-      haml :index
-    end
-    
-    # homepage
-    get '/index.mobile' do
-      haml :index
+      haml :"index#{@mobile}"
     end
 
     get '/:page/' do

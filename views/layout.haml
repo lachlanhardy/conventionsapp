@@ -6,7 +6,7 @@
     /[if IE]
       %script{:src => "http://html5shiv.googlecode.com/svn/trunk/html5.js"}
 
-    %title= (@title != "Stockstandard" ? "#{@title} at Stockstandard" : "Stockstandard")
+    %title= (@title != "Convention" ? "#{@title} at Convention" : "Convention")
     
     - if options.environment == :production
       %link{:href => versioned_stylesheet("production/minified"), :media => "screen, projection", :rel => "stylesheet", :type => "text/css"}
@@ -18,11 +18,11 @@
 
     -# %link{:rel => "icon", :href => versioned_favicon, :type => "image/x-icon"}
 
-  %body{:id => "stockstandard-heroku-com", :class => (@layout ? @layout : (@category == "*" ? "tags" : @category))}
+  %body{:id => "convention-heroku-com", :class => (@layout ? @layout : (@category == "*" ? "tags" : @category))}
     #wrapper
       %header.layout
         %h1
-          = home_link("Stockstandard")
+          = home_link("Convention")
       = nav_builder
       #page
         - if mobile_request?
