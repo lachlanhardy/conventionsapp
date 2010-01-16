@@ -31,7 +31,10 @@ module Application
     # helper_method :mobile_request?
     def mobile_request?
       # mobile_user_agent_patterns.any? {|r| request.headers['User-Agent'] =~ r}
-      mobile_user_agent_patterns.any? {|r| request.env['User-Agent'] =~ r}
+      mobile_user_agent_patterns.any? {|r| 
+        haml_concat(request)
+        request.env['User-Agent'] =~ r
+        }
     end
     def mobile_user_agent_patterns
       [
