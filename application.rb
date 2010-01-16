@@ -34,11 +34,11 @@ module Application
     
     # homepage
     get '/' do
-      haml :"index#{@mobile}"
+      haml :"index#{@mobile}", :layout => :"layout#{@mobile}"
     end
 
     get '/:page/' do
-      haml params[:page].to_sym
+      haml :"#{params[:page]}#{@mobile}", :layout => :"layout#{@mobile}"
     end
 
   end
