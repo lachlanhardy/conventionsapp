@@ -1,8 +1,6 @@
 require 'rubygems'
 require 'sinatra/base'
 require 'haml'
-require 'yaml'
-require 'net/http'
 
 module Application
 
