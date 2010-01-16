@@ -21,7 +21,7 @@ module Application
     end
     
     before do
-      !mobile_request? ? @mobile = ".mobile" : @mobile = ""
+      mobile_request? ? @mobile = ".mobile" : @mobile = ""
     end
 
     error do
