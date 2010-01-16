@@ -30,7 +30,8 @@ module Application
     
     # helper_method :mobile_request?
     def mobile_request?
-      mobile_user_agent_patterns.any? {|r| request.headers['User-Agent'] =~ r}
+      # mobile_user_agent_patterns.any? {|r| request.headers['User-Agent'] =~ r}
+      mobile_user_agent_patterns.any? {|r| request.env['User-Agent'] =~ r}
     end
     def mobile_user_agent_patterns
       [
@@ -43,12 +44,15 @@ module Application
     get '/' do
       haml :index
     end
-
+    
     # homepage
+    get '/index.mobile' do
+      haml :index
+    end
+
     get '/:page/' do
       haml params[:page].to_sym
     end
-
 
   end
 end
