@@ -1,5 +1,5 @@
-# require 'rubygems'
 require 'sinatra/base'
+require 'openid'
 require 'haml'
 
 module Application
