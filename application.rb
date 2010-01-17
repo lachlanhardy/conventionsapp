@@ -16,10 +16,6 @@ module Application
       include Application::Helpers
     end
     
-    configure do
-      #configure_avatars(Dir.glob("public/images/userlist.yaml")[0])
-    end
-    
     before do
       mobile_request? ? @mobile = ".mobile" : @mobile = ""
     end
@@ -34,11 +30,11 @@ module Application
     
     # homepage
     get '/' do
-      haml :"index#{@mobile}", :layout => :"layout#{@mobile}"
+      deliver :index
     end
 
     get '/:page/' do
-      haml :"#{params[:page]}#{@mobile}", :layout => :"layout#{@mobile}"
+      deliver :"#{params[:page]}"
     end
 
   end

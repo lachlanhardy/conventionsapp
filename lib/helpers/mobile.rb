@@ -9,5 +9,13 @@ module Application
         /Android.*AppleWebKit/
       ]
     end
+    def mobile_file(name)
+      mobile_file = "#{options.views}/#{name}#{@mobile}.haml"
+      if File.exist? mobile_file
+        view = "#{name}#{@mobile}"
+      else
+        view = name
+      end
+    end
   end
 end
