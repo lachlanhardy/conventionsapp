@@ -2,4 +2,8 @@
 - @layout = "home"
 
 %section
-  %h1 Convention
+  %h1 Conventionsapp
+  %h2 Ready to get started?
+  %a{:href => @request_token.authorize_url} Sign in with Twitter
+  %p.small
+    We will don't ask for nor want your Twitter username/password. Be suspicious of anyone who does.
