@@ -3,6 +3,8 @@ require 'haml'
 gem 'oauth'
 require 'oauth/consumer'
 require 'dm-core'
+# require 'warden'
+require 'warden-googleapps'
 
 module Application
 
@@ -11,6 +13,14 @@ module Application
   # set :environment => 'production' # for testing minification etc
   
   class App < Sinatra::Application
+    
+    use Warden::Manager do |manager|
+      manager.default_strategies :google_apps
+      # manager.failure_app = BadAuthentication
+
+      manager.config[:google_apps_domain] = 'toolmantim.com'
+    end
+    
     class Users
       include DataMapper::Resource
       property :id, Serial
@@ -53,8 +63,10 @@ module Application
     
     # homepage
     get '/' do
+      ensure_authenticated
       do_oauth_dance
-      deliver :index
+      # deliver :index
+      haml "%h2= 'Hello There, #{user.full_name}!'"
     end
     
     get '/signup/' do
@@ -82,6 +94,10 @@ module Application
     get '/:page/' do
       deliver :"#{params[:page]}"
     end
+    
+
 
   end
+  
+
 end
