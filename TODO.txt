@@ -1,34 +1,36 @@
 Phase 1
  - Allow users to sign via Google OpenID
- - signin via normal OpenID ??
  - Populate profile from web
 
 Phase 2
  - Find networks and offer association
-  - authenticate Twitter
-  - authenticate Flickr
+  - authenticate Twitter (not necessary if verified by ze Google)
+  - authenticate Flickr (not necessary if verified by ze Google)
  - Find contacts and offer connection
  
 Phase 3 
- - Set up tweeting from within app
-  - view tweets
-  - send tweets
-  - reply to tweets
- - Set up flickr within app
-  - view photos
-  - comment on photos
+- Allow checkin to sessions and events
+- associate tweets and photos with sessions based on time
+- Show content associated with sessions and speakers
+ - eg app/speakers/lisa-herrod/ shows the tweets and photos from her session
+ - same with app/sessions/the-open-web
 
 Phase 4
- - Allow checkin to sessions and events
- - associate tweets and photos with sessions based on time
- - FireEagle ??
- - Show content associated with sessions
-  - eg stock/sessions/lisa-herrod/ shows the tweets and photos from her session
-  
+  - Set up tweeting from within app
+    - view tweets
+    - send tweets
+    - reply to tweets
+  - Set up flickr within app
+    - view photos
+    - comment on photos
+
 Phase 5
+ - FireEagle ??
  - Bookmarks
   - associated commenting.
- 
+
+Phase 6
+ - utilize alien technology
 
 Tasks to be done before launch, in priority order:
  - confirm parity between desktop and iphone
