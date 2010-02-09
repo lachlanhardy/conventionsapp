@@ -1,3 +1,5 @@
+Phase 1 and 2 would illustrate my point, but 3 makes it actually useful.
+
 Phase 1
  - Allow users to sign via Google OpenID
  - Populate profile from web
@@ -7,7 +9,7 @@ Phase 2
   - authenticate Twitter (not necessary if verified by ze Google)
   - authenticate Flickr (not necessary if verified by ze Google)
  - Find contacts and offer connection
- 
+
 Phase 3 
 - Allow checkin to sessions and events
 - associate tweets and photos with sessions based on time
