@@ -2,7 +2,7 @@ Phase 1 and 2 would illustrate my point, but 3 makes it actually useful.
 
 Phase 1
  - Allow users to sign via Google OpenID
- - Populate profile from web
+ - Populate profile from web - http://socialgraph-resources.googlecode.com/svn/trunk/samples/exploreapi.html
 
 Phase 2
  - Find networks and offer association
