@@ -22,7 +22,8 @@ if ENV['RACK_ENV'] != 'production'
   STDERR.reopen(log)
 end
 
+
+use Rack::Session::Cookie
 use TrailingSlash
 # use Rack::Lint # for Rack dev
-# run Sinatra::Application
 run Application::App.new

@@ -1,26 +1,25 @@
 require 'sinatra/base'
 require 'haml'
-gem 'oauth'
-require 'oauth/consumer'
 require 'dm-core'
+require 'sinatra_auth_gmail'
 
 module Application
-
   enable :sessions
   set :haml, {:format => :html5, :attr_wrapper => '"'}
   # set :environment => 'production' # for testing minification etc
   
   class App < Sinatra::Application
+    register Sinatra::Auth::Gmail
+
     class Users
       include DataMapper::Resource
       property :id, Serial
-      property :email, String
-      property :twitter_screen_name, String
-      property :twitter_user_id, String
-      property :twitter_oauth_token, String
-      property :twitter_oauth_token_secret, String
-      property :password, String
-      property :openid, String
+      property :first_name, String
+      property :last_name, String
+      property :email, String, :format => :email_address
+      property :homepage, String
+      property :google_acct_id, String, :format => :email_address
+      property :google_identity_url, String
     end
     
     Dir.glob("lib/helpers/*").each do |helper|
@@ -37,9 +36,6 @@ module Application
     end
 
     before do
-      # TODO: split these out to a config file
-      @consumer = OAuth::Consumer.new "KKIsmmyjgHy4nUtHKuUeg", "at1tKkA5PPq8QHlAN8uByWfd3Zn7eYFks7U9cJMnW8", {:site=>"http://twitter.com"}
-      puts @consumer
       mobile_request? ? @mobile = ".mobile" : @mobile = ""
     end
 
@@ -53,29 +49,36 @@ module Application
     
     # homepage
     get '/' do
-      do_oauth_dance
       deliver :index
     end
     
-    get '/signup/' do
-      @access_token = OAuth::RequestToken.new(@consumer, session[:request_token], session[:request_token_secret]).get_access_token(:oauth_verifier =>params[:oauth_verifier])
-      
-      session[:access_token] = @access_token
-
-      @user = Users.new
-      haml :signup
+    get '/sign-in/' do
+      authorize!
+      # some query shit my brain can't think of right now
+      # if (gmail_user.email != @user.email)
+        redirect "/signup/"
+      # else
+        # @signed_in = true
+        # redirect "/"
+      # end
     end
+    
+    get '/signup/' do
+      @user = Users.new
+      deliver :signup
+    end
+    
     post '/create/' do
       @user = Users.new(params[:user])
-      @user.twitter_screen_name = session[:access_token][:screen_name]
-      @user.twitter_user_id = session[:access_token][:user_id]
-      @user.twitter_oauth_token = session[:access_token][:oauth_token]
-      @user.twitter_oauth_token_secret = session[:access_token][:oauth_token_secret]
+      @user.first_name = gmail_user.first_name
+      @user.last_name = gmail_user.last_name
+      @user.google_acct_id = gmail_user.email
+      @user.google_identity_url = gmail_user.identity_url
 
-      if @user.valid? && @user.save!
-        redirect "/thank-you/"
+      if @user.save!
+        redirect "/"
       else
-        haml :signup
+        deliver :signup
       end
     end
     

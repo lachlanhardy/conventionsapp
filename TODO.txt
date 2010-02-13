@@ -1,7 +1,6 @@
 Phase 1
  - Allow users to sign via Google OpenID
- - signin via normal OpenID ??
- - Populate profile from web
+ - Populate profile from web - http://socialgraph-resources.googlecode.com/svn/trunk/samples/exploreapi.html
 
 Phase 2
  - Find networks and offer association

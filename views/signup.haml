@@ -1,41 +1,19 @@
-- if @access_token.params[:user_id]
-  %h2 Sign-up for Frypan
-  %p 
-    Hello
-    %strong= "@" + @access_token.params[:screen_name]
-- else
-  %p Something went badly wrong. Hold me?
+%h2 Sign-up for Conventionsapp
+%p
+  Hello
+  %strong= gmail_user.full_name
 
 %form{:action => "/create/", :method => "post"}
-  -# - if @user.error
-  -#   %p.errors
-  -#     = @user.error
   %ul
     %li
-      %h3
-        Where should we send your frypan emails?
-    
-    %li
       %label Email
-      %input{:type => "text", :class => "text", :name => "user[email]", :value => @user.email}
+      %input{:type => "text", :class => "text", :name => "user[email]", :value => gmail_user.email}
       %span We won't sell it, promise. But we need it.
-
-    %li
-      %h3
-        How do you want to login to Frypan?
       
     %li
-      %label Password
-      %input{:type => "password", :class => "text", :name => "user[password]", :value => @user.password}
-    
-    %li
-      %span.quiet — or — 
-
-    %li
-      %label Open ID
-      %input{:type => "text", :class => "text", :name => "user[openid]", :value => @user.openid}
-      %span 
-        %a{:href=>"http://openid.net/what/"} What is this?
+      %label Homepage
+      %input{:type => "text", :class => "text", :name => "user[homepage]"}
+      %span Where's your home on the web?
 
     %li
       %label
