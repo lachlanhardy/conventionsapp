@@ -93,14 +93,14 @@ body {background: #fff; color: #0e0e0e; font: 62.5%/1.3 "Helvetica Neue", Helvet
 
   /* =Header */
   header.layout {background: #f30; color: #fff; min-height: 5em; margin: 0 0 2.8em 0; padding: 0.2em 1em 0 1em; position: relative;}
-    header.layout h1 {background: transparent; color: #fff; font-size: 6em; left: -0.3em; letter-spacing: -0.05em; margin: 0; position: absolute; text-transform: uppercase; top: -0.2em; width: auto;}
+    header.layout h1 {background: transparent; color: #fff; font-size: 6em; left: -0.25em; letter-spacing: -0.05em; margin: 0; position: absolute; text-transform: uppercase; top: -0.2em; width: auto;}
     header.layout h1 span,
-    header.layout h1 a {border: 0.1em solid transparent; padding: 0.1em 0.2em 0;}
+    header.layout h1 a {padding: 0.1em 0.2em 0;}
     header.layout h1 a:link,
     header.layout h1 a:visited {background: transparent; color: #fff; text-decoration: none;}
     header.layout h1 a:hover,
     header.layout h1 a:active,
-    header.layout h1 a:focus {background: #fff; border: 0.1em solid #f30; color: #f30;}
+    header.layout h1 a:focus {background: #fff; color: #f30;}
 
   /* =Nav */
   nav {overflow: auto;}
