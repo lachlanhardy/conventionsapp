@@ -1,3 +1,13 @@
+namespace :heroku do
+  desc "minify and deploy"
+  task :go do
+    cmd = 'rake minifier:check'
+    system cmd
+    deploy = 'git push heroku master'
+    system deploy
+  end
+end
+
 namespace :minifier do
 
   desc "check"
