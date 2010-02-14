@@ -100,7 +100,7 @@ module Application
       @user.google_acct_id = gmail_user.email
       @user.google_identity_url = gmail_user.identity_url
 
-      if @user.save!
+      if @user.save
         # Update our user object now we have a fully-fledged member
         env['warden'].set_user(@user)
         redirect "/"
