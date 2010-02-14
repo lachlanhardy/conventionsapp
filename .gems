@@ -1,2 +1,0 @@
-gem 'lachlanhardy-warden-googleapps', :require => 'warden-googleapps'
-sinatra_auth_gmail
