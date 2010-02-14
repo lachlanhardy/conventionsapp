@@ -108,6 +108,15 @@ TOC
 
   /* =Dates, Times etc */
   .date {font: 1em/1.6 Georgia, serif;}
+  
+  /* =Forms */
+  form {}
+    form ul {}
+      form li {margin: 0 0 1em 0;}
+        form label {font-weight: bold; width: 8em;}
+        form input {}
+        form li span {display: block;}
+        
 
 /* =Structure */
 html,
