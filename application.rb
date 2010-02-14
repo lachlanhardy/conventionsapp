@@ -19,7 +19,7 @@ module Application
       property :email, String, :format => :email_address
       property :homepage, String
       property :google_acct_id, String, :format => :email_address
-      property :google_identity_url, String, :length => '255'
+      property :google_identity_url, Text, :length => 255
     end
     
     Dir.glob("lib/helpers/*").each do |helper|
