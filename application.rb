@@ -9,12 +9,20 @@ module Application
   # set :environment => 'production' # for testing minification etc
   
   class App < Sinatra::Application
+    
+
+    # Warden::Strategies.add(:google_apps) do
+    #   def open_id_store
+    #     ::OpenID::Store::Filesystem.new("#{Dir.tmpdir}")
+    #   end
+    # end
+
     register Sinatra::Auth::Gmail
 
     App.use Warden::Manager do |manager|
         manager.default_strategies :google_apps
         # manager.failure_app = BadAuthentication
-
+    
         manager[:google_apps_endpoint] = 'http://www.google.com/accounts/o8/id'
         def open_id_store
           ::OpenID::Store::Filesystem.new("#{Dir.tmpdir}")
