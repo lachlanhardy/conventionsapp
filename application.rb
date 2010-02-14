@@ -25,7 +25,7 @@ module Application
     
         manager[:google_apps_endpoint] = 'http://www.google.com/accounts/o8/id'
         def open_id_store
-          ::OpenID::Store::Filesystem.new("#{Dir.tmpdir}")
+          ::OpenID::Store::Filesystem.new("#{Sinatra::Application.root}/tmp")
         end
     end
 
