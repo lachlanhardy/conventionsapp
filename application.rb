@@ -11,7 +11,7 @@ module Application
   class App < Sinatra::Application
     register Sinatra::Auth::Gmail
     
-    class Users
+    class User
       include DataMapper::Resource
       property :id, Serial
       property :first_name, String
@@ -33,9 +33,30 @@ module Application
     configure do
       DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
       DataMapper.auto_upgrade!
+
+      # Setup warden user handling
+      Warden::Manager.after_authentication do |user, auth, opts|
+        # Check if we have a matching user in the DB
+        if u = User.first(:google_identity_url => user.identity_url)
+          user = u
+        else
+          # a new user. Send to signup page
+          throw(:redirect, "/signup/")
+        end
+      end
     end
 
     before do
+      # the warden openid strategy only completes the request if authenticate is
+      # called on the return page, which by default is / . This seems to be buggy
+      # behavior, to work around it we catch all incoming requests, and if they look
+      # like an openid response, we call authorize! to make it complete.
+      if params['openid.identity']
+        authorize!
+        # clean up params
+        redirect request.path
+      end
+
       mobile_request? ? @mobile = ".mobile" : @mobile = ""
     end
 
@@ -53,29 +74,35 @@ module Application
     end
     
     get '/sign-in/' do
-      authorize!
-      # some query shit my brain can't think of right now
-      # if (gmail_user.email != @user.email)
-        redirect "/signup/"
-      # else
-        # @signed_in = true
-        # redirect "/"
-      # end
+      auth
+      redirect '/'
+    end
+
+    get '/test/' do
+      auth
+      "<h1>TEST PAGE. #{gmail_user.first_name}</h1>"
+    end
+
+    get '/sign-out/' do
+      env['warden'].logout
+      redirect '/'
     end
     
     get '/signup/' do
-      @user = Users.new
+      @user = User.new
       deliver :signup
     end
     
     post '/create/' do
-      @user = Users.new(params[:user])
+      @user = User.new(params[:user])
       @user.first_name = gmail_user.first_name
       @user.last_name = gmail_user.last_name
       @user.google_acct_id = gmail_user.email
       @user.google_identity_url = gmail_user.identity_url
 
       if @user.save!
+        # Update our user object now we have a fully-fledged member
+        env['warden'].set_user(@user)
         redirect "/"
       else
         deliver :signup

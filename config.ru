@@ -18,8 +18,8 @@ set :options, {
   :raise_errors => true
   }
 
-
-use Rack::Session::Cookie
+use Rack::Session::Cookie, 
+                  :key => ENV['SESSION_KEY'] ? ENV['SESSION_KEY'] : 'rack.session'
 use TrailingSlash
 use Rack::CatchRedirect
 # use Rack::Lint # for Rack dev
