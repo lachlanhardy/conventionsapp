@@ -45,7 +45,7 @@ module Application
     end
 
     helpers do
-      include Application::Helpers
+      include ::Application::Helpers
     end
     
     configure do
