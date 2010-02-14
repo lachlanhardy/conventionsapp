@@ -1,2 +1,2 @@
-lachlanhardy-warden-googleapps --version '>= 0.0.4'
+warden-googleapps --version '>= 0.0.3'
 sinatra_auth_gmail --version '>= 0.0.1'
