@@ -1,10 +1,6 @@
-- @title = "Conventionsapp"
+- @title = "Conventions"
 - @layout = "home"
 
 %section
-  %h1 Conventionsapp
   %h2 Ready to get started?
-  = "@user: #{@user}"
-  - if @user.nil?
-    %a{:href => "/sign-in/"} Sign in via Google
-    %p.small We don't ask for nor want your Google Account password. Be suspicious of anyone who does.
+  = partial :login
