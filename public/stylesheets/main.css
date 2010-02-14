@@ -52,10 +52,10 @@ TOC
   /* =Links */
   a:link {color: #0066B3;}
   a:visited {color: #464646;}
-  a:hover, a:active, a:focus {color: #FF8000;}
+  a:hover, a:active, a:focus {color: #f30;}
 
   /* =Headings */
-  h1, h2, h3, h4, h5, h6 {font-family: "Helvetica Neue", Helvetica, Arial, FreeSans, sans-serif; margin: 1em 0 0.5em 0;}
+  h1, h2, h3, h4, h5, h6 {font-family: Georgia, "New Century Schoolbook", "Nimbus Roman No9 L", serif; margin: 1em 0 0.5em 0;}
   h1 {font-size: 3em; margin: 0 0 0.5em 0;}
   h2 {font-size: 2em;}
   h3 {font-size: 1.7em;}
@@ -92,19 +92,19 @@ body {background: #fff; color: #0e0e0e; font: 62.5%/1.3 "Helvetica Neue", Helvet
 #wrapper {min-height: 100%; overflow: hidden;}
 
   /* =Header */
-  header.layout {background: #ff8000; color: #fff; min-height: 6em; margin: 0 0 2.8em 0; padding: 0.2em 1em 0 1em; position: relative;}
-    header.layout h1 {background: transparent; color: #fff; font: 700 5em "Courier New", monospace; left: 0.05em; letter-spacing: 0.2em; margin: 0; position: absolute; text-transform: uppercase; top: 0.46em; width: auto;}
+  header.layout {background: #f30; color: #fff; min-height: 5em; margin: 0 0 2.8em 0; padding: 0.2em 1em 0 1em; position: relative;}
+    header.layout h1 {background: transparent; color: #fff; font-size: 6em; left: -0.25em; letter-spacing: -0.05em; margin: 0; position: absolute; text-transform: uppercase; top: -0.2em; width: auto;}
     header.layout h1 span,
-    header.layout h1 a {border: 0.1em solid transparent; padding: 0.1em 0.2em 0;}
+    header.layout h1 a {padding: 0.1em 0.2em 0;}
     header.layout h1 a:link,
     header.layout h1 a:visited {background: transparent; color: #fff; text-decoration: none;}
     header.layout h1 a:hover,
     header.layout h1 a:active,
-    header.layout h1 a:focus {background: #fff; border: 0.1em solid #ff8000; color: #ff8000;}
+    header.layout h1 a:focus {background: #fff; color: #f30;}
 
   /* =Nav */
   nav {overflow: auto;}
-    nav ul {background: #000; color: #ff8000; float: left; width: auto;}
+    nav ul {background: #000; color: #f30; float: left; width: auto;}
       nav ul li {float: left; width: auto;}
         nav ul li a,
         nav ul li span {display: block; font-size: 1.4em; font-weight: 700; padding: 0.5em 1.1em; position:relative; z-index:1;}
@@ -113,13 +113,13 @@ body {background: #fff; color: #0e0e0e; font: 62.5%/1.3 "Helvetica Neue", Helvet
         nav ul li a:visited {background: #000; color: #fff;}
         nav ul li a:hover,
         nav ul li a:active,
-        nav ul li a:focus {background: #ff8000; color: #fff; text-decoration: none;}
+        nav ul li a:focus {background: #f30; color: #fff; text-decoration: none;}
   
   /* =Page */
-  #page {font-size: 1.5em; margin: 0.5em 0 0 0; padding: 1em; position: relative;}
+  #page {font-size: 1.5em; padding: 1em; position: relative;}
 
     /* =Columns */    
-    section {float: left; margin: 0 0 -80em 15em; min-height: 100%; padding: 1em 0 90em 1em; position: relative; width: auto;}
+    section {float: left; margin: 0 0 -80em 1em; min-height: 100%; padding: 1em 0 90em 1em; position: relative; width: auto;}
 
   /* =Footer */
   footer.layout {background: #111; clear: both; color: #fff; font-size: 1.5em; margin: -2.4em 0 0 0; position: relative; bottom: 0; text-align: center; width: 100%;}
@@ -128,7 +128,7 @@ body {background: #fff; color: #0e0e0e; font: 62.5%/1.3 "Helvetica Neue", Helvet
       footer.layout a:visited {color: #fff;}
       footer.layout a:hover, 
       footer.layout a:active, 
-      footer.layout a:focus {color: #FF8000;}
+      footer.layout a:focus {color: #f30;}
 
 /* =JS */
 html.js {}
