@@ -2,7 +2,4 @@
 .DS_Store
 log/*
 *.sqlite3
-vendor/gems/gems
-vendor/gems/specifications
-vendor/gems/doc
-vendor/gems/environment.rb
+vendor/gems/*
