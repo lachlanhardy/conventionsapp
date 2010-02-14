@@ -4,6 +4,7 @@ ENV['TMPDIR'] = ::File.join(RACK_ROOT, 'tmp')
 # the middlewares
 require 'rack'
 require 'lib/rack/trailingslash'
+require 'lib/rack/catch_redirect'
 
 # the app
 require 'sinatra'
@@ -20,5 +21,6 @@ set :options, {
 
 use Rack::Session::Cookie
 use TrailingSlash
+use Rack::CatchRedirect
 # use Rack::Lint # for Rack dev
 run Application::App.new
