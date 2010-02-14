@@ -18,7 +18,7 @@ module Application
       property :last_name, String
       property :email, String, :format => :email_address
       property :homepage, String
-      property :google_acct_id, String, :format => :email_address
+      property :google_acct_id, String, :format => :email_address, :length => 255
       property :google_identity_url, String
     end
     
