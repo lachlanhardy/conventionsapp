@@ -16,11 +16,11 @@
       
     -# %link{:rel => "icon", :href => versioned_favicon, :type => "image/x-icon"}
 
-  %body{:id => "convention-heroku-com", :class => (@layout ? @layout : (@category == "*" ? "tags" : @category))}
+  %body{:id => "conventionsapp-com", :class => (@layout ? @layout : (@category == "*" ? "tags" : @category))}
     #wrapper
       %header.layout
         %h1
-          = home_link("Convention")
+          = home_link("Conventions")
       = nav_builder
       #page
         - if mobile_request?
@@ -34,6 +34,5 @@
     - else
       / jQuery - for the hottness
       %script{:src => versioned_javascript("jquery"), :type => "text/javascript"}=""
-
       / Run site scripts
       %script{:src => versioned_javascript("go"), :type => "text/javascript"}=""
