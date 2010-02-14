@@ -16,12 +16,6 @@ set :options, {
   :env => ENV['RACK_ENV'] ? ENV["RACK_ENV"].to_sym : "development",
   :raise_errors => true
   }
-  
-if ENV['RACK_ENV'] != 'production'
-  log = ::File.new("log/sinatra.log", "a")
-  STDOUT.reopen(log)
-  STDERR.reopen(log)
-end
 
 
 use Rack::Session::Cookie
