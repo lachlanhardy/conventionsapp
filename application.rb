@@ -19,7 +19,7 @@ module Application
       property :email, String, :format => :email_address
       property :homepage, String
       property :google_acct_id, String, :format => :email_address
-      property :google_identity_url, Text
+      # property :google_identity_url, Text
     end
     
     Dir.glob("lib/helpers/*").each do |helper|
@@ -98,7 +98,7 @@ module Application
       @user.first_name = gmail_user.first_name
       @user.last_name = gmail_user.last_name
       @user.google_acct_id = gmail_user.email
-      @user.google_identity_url = gmail_user.identity_url
+      # @user.google_identity_url = gmail_user.identity_url
 
       if @user.save
         # Update our user object now we have a fully-fledged member
