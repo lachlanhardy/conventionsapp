@@ -5,8 +5,6 @@ class Rack::CatchRedirect
       @app.call(env)
     end
     if result.kind_of?(String)
-      puts "redirect!!"
-      p result
       [302, {"Location" => result, "Content-Type" => "text/plain"}, ["Found"]]
     else
       result
