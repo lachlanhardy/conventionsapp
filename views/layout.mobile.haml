@@ -3,7 +3,7 @@
   %head
     %meta{:"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
 
-    %title= (@title != "Convention" ? "#{@title} at Convention" : "Convention")
+    %title= (@title != "Conventions" ? "#{@title} at Convention" : "Conventions")
     
     - if options.environment == :production
       %link{:href => versioned_stylesheet("production/minified"), :media => "screen, projection", :rel => "stylesheet", :type => "text/css"}
@@ -19,7 +19,7 @@
     #wrapper
       %header.layout
         %h1
-          = home_link("Convention")
+          = home_link("Conventions")
       = nav_builder
       #page
         - if mobile_request?
