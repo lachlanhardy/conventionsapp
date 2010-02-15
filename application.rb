@@ -39,8 +39,14 @@ module Application
       Warden::Manager.after_authentication do |user, auth, opts|
         # Check if we have a matching user in the DB
         if u = User.first(:google_identity_url => user.identity_url)
-          user = u
+          # I'm not 100% sure if this is the best way.
+          auth.set_user u
         else
+          # Because we may have some strange arrayification going on in user, fix it
+          user.first_name = unarrayify(user.first_name)
+          user.last_name = unarrayify(user.last_name)
+          user.email = unarrayify(user.email)
+          auth.set_user user
           # a new user. Send to signup page
           throw(:redirect, "/signup/")
         end
