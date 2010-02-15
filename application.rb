@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'haml'
 require 'dm-core'
 require 'sinatra_auth_gmail'
+require 'pp'
 
 module Application
   enable :sessions
