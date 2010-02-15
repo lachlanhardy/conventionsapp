@@ -1,4 +1,7 @@
-= "@user: #{@user}"
-- if @user.nil?
+- if !logged_in?
+  %h2 Ready to get started?
   %a{:href => "/sign-in/"} Sign in via Google
   %p.small We don't ask for nor want your Google Account password. Be suspicious of anyone who does.
+- else
+  %h2 That worked!
+  %p You are logged in, now we'd better think of something else for you to do.

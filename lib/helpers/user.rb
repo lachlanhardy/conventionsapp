@@ -12,4 +12,15 @@ def auth
     end
   end
 end
+def logged_in?
+ if gmail_user && !gmail_user.kind_of?(Warden::GoogleApps::User)
+   # fully logged in and signed up
+   return true
+ elsif gmail_user
+   # not signed up. Send to sign up form.
+   raise(redirect, '/signup/')
+ else
+   false
+ end
+end
 
