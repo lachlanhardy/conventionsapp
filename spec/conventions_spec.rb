@@ -22,4 +22,5 @@ describe "My App" do
     get '/'
     last_response.body == "blah blah blah"
   end
+
 end

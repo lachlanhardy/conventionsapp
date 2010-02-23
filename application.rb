@@ -11,8 +11,6 @@ module Application
   set :haml, {:format => :html5, :attr_wrapper => '"'}
   # set :environment => 'production' # for testing minification etc
   set :options, {
-    :views => ::File.join(RACK_ROOT, 'views'),
-    :app_file => ::File.join(RACK_ROOT, 'application.rb'),
     :run => false,
     :env => ENV['RACK_ENV'] ? ENV["RACK_ENV"].to_sym : "development",
     :raise_errors => true
