@@ -1,3 +1,5 @@
+RACK_ROOT = File.expand_path(File.join(::File.dirname(__FILE__), "..")) unless defined?(RACK_ROOT)
+
 def app
   @app ||= ::Application::App
 end
@@ -9,6 +11,7 @@ require 'sinatra'
 require 'rack/test'
 require 'spec'
 require app_rb
+
 
 set :app_file, app_rb
 set :environment, :test

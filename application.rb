@@ -3,15 +3,30 @@ require 'haml'
 require 'dm-core'
 require 'sinatra_auth_gmail'
 require 'pp'
+require 'lib/rack/trailingslash'
+require 'lib/rack/catch_redirect'
 
 module Application
   enable :sessions
   set :haml, {:format => :html5, :attr_wrapper => '"'}
   # set :environment => 'production' # for testing minification etc
-  
+  set :options, {
+    :views => ::File.join(RACK_ROOT, 'views'),
+    :app_file => ::File.join(RACK_ROOT, 'application.rb'),
+    :run => false,
+    :env => ENV['RACK_ENV'] ? ENV["RACK_ENV"].to_sym : "development",
+    :raise_errors => true
+  }
+
+
+  use Rack::Session::Cookie,
+                    :key => ENV['SESSION_KEY'] ? ENV['SESSION_KEY'] : 'rack.session'
+  use TrailingSlash
+  use Rack::CatchRedirect
+
   class App < Sinatra::Application
     register Sinatra::Auth::Gmail
-    
+
     class User
       include DataMapper::Resource
       property :id, Serial
@@ -22,7 +37,7 @@ module Application
       property :google_acct_id, String, :format => :email_address
       property :google_identity_url, String, :length => 255
     end
-    
+
     Dir.glob("lib/helpers/*").each do |helper|
       require "#{File.dirname(__FILE__)}/#{helper}"
     end
@@ -30,7 +45,7 @@ module Application
     helpers do
       include ::Application::Helpers
     end
-    
+
     configure do
       DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
       DataMapper.auto_upgrade!
@@ -74,12 +89,12 @@ module Application
     not_found do
       handle_fail
     end
-    
+
     # homepage
     get '/' do
       deliver :index
     end
-    
+
     get '/sign-in/' do
       auth
       redirect '/'
@@ -94,12 +109,12 @@ module Application
       env['warden'].logout
       redirect '/'
     end
-    
+
     get '/signup/' do
       @user = User.new
       deliver :signup
     end
-    
+
     post '/create/' do
       @user = User.new(params[:user])
       @user.first_name = gmail_user.first_name
@@ -115,7 +130,7 @@ module Application
         deliver :signup
       end
     end
-    
+
     get '/:page/' do
       deliver :"#{params[:page]}"
     end
