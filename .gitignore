@@ -4,3 +4,4 @@ log/*
 *.sqlite3
 vendor/gems/*
 tmp/*
+coverage/*
