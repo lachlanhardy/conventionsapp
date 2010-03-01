@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'haml'
 require 'dm-core'
+gem 'sinatra_auth_gmail', '~>0.1'
 require 'sinatra_auth_gmail'
 require 'pp'
 require 'lib/rack/trailingslash'
@@ -17,8 +18,7 @@ module Application
   }
 
 
-  use Rack::Session::Cookie,
-                    :key => ENV['SESSION_KEY'] ? ENV['SESSION_KEY'] : 'rack.session'
+  use Rack::Session::Cookie
   use TrailingSlash
   use Rack::CatchRedirect
 
@@ -48,32 +48,22 @@ module Application
       DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
       DataMapper.auto_upgrade!
 
-      # Setup warden user handling
       Warden::Manager.after_authentication do |user, auth, opts|
-        # Check if we have a matching user in the DB
         if u = User.first(:google_identity_url => user.identity_url)
-          # I'm not 100% sure if this is the best way.
-          auth.set_user u
+          u
         else
-          # Because we may have some strange arrayification going on in user, fix it
           user.first_name = unarrayify(user.first_name)
           user.last_name = unarrayify(user.last_name)
           user.email = unarrayify(user.email)
-          auth.set_user user
-          # a new user. Send to signup page
+          auth.set_user user, :scope => :google
           throw(:redirect, "/signup/")
         end
       end
     end
 
     before do
-      # the warden openid strategy only completes the request if authenticate is
-      # called on the return page, which by default is / . This seems to be buggy
-      # behavior, to work around it we catch all incoming requests, and if they look
-      # like an openid response, we call authorize! to make it complete.
       if params['openid.identity']
-        authorize!
-        # clean up params
+        authenticate!
         redirect request.path
       end
 
@@ -94,35 +84,37 @@ module Application
     end
 
     get '/sign-in/' do
-      auth
+      authenticate!
       redirect '/'
     end
 
     get '/test/' do
-      auth
+      authenticate!
       "<h1>TEST PAGE. #{gmail_user.first_name}</h1>"
     end
 
     get '/sign-out/' do
-      env['warden'].logout
+      logout!
       redirect '/'
     end
 
     get '/signup/' do
+      authenticate! :scope => :google unless authenticated?
       @user = User.new
       deliver :signup
     end
 
     post '/create/' do
       @user = User.new(params[:user])
-      @user.first_name = gmail_user.first_name
-      @user.last_name = gmail_user.last_name
-      @user.google_acct_id = gmail_user.email
-      @user.google_identity_url = gmail_user.identity_url
+      @user.first_name          = google_user.first_name
+      @user.last_name           = google_user.last_name
+      @user.google_acct_id      = google_user.email
+      @user.google_identity_url = google_user.identity_url
 
       if @user.save
         # Update our user object now we have a fully-fledged member
-        env['warden'].set_user(@user)
+        warden.set_user(@user)
+        logout! :google
         redirect "/"
       else
         deliver :signup

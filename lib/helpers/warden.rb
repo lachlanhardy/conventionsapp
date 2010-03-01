@@ -1,12 +1,11 @@
 module Application
   module Helpers
-    def ensure_authenticated
-      unless env['warden'].authenticate!
-        throw(:warden)
-      end
+    def google_user
+      warden.user(:google)
     end
+
     def user
-      env['warden'].user
+      warden.user
     end
   end
 end

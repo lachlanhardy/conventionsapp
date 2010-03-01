@@ -3,15 +3,15 @@
 %h2 Sign-up for Conventions
 %p
   Hello
-  %strong= gmail_user.full_name
+  %strong= google_user.full_name
 
 %form{:action => "/create/", :method => "post"}
   %ul
     %li
       %label{:for => "user_email"} Email
-      %input{:type => "text", :class => "text", :id => "user_email", :name => "user[email]", :value => gmail_user.email}
+      %input{:type => "text", :class => "text", :id => "user_email", :name => "user[email]", :value => google_user.email}
       %span We won't sell it, promise. But we need it in case you forget your login details
-      
+
     %li
       %label{:for => "user_homepage"} Homepage
       %input{:type => "text", :class => "text", :id => "user_homepage", :name => "user[homepage]"}
@@ -19,4 +19,4 @@
 
     %li
       %input{:name => "submit", :type => "submit", :value => "Finish", :class => "button"}
-      
+

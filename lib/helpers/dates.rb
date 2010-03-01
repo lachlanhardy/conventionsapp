@@ -7,10 +7,10 @@ module Application
       date.strftime("%Y-%m-%dT%H:%M:%SZ")
     end
     def prettify_base_date(base)
-      make_base_date(base).strftime("%H%Mh %A, %d %B %Y")    
+      make_base_date(base).strftime("%H%Mh %A, %d %B %Y")
     end
     def prettify_date(date)
-      date.strftime("%H%Mh %A, %d %B %Y")    
+      date.strftime("%H%Mh %A, %d %B %Y")
     end
   end
 end
