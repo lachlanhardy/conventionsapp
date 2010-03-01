@@ -1,5 +1,9 @@
 require 'sinatra/base'
 require 'haml'
+# need to set this up
+gem 'warden', '>=0.9.5'
+require 'warden'
+
 require 'dm-core'
 gem 'sinatra_auth_gmail', '~>0.1'
 require 'sinatra_auth_gmail'
@@ -90,7 +94,7 @@ module Application
 
     get '/test/' do
       authenticate!
-      "<h1>TEST PAGE. #{gmail_user.first_name}</h1>"
+      "<h1>TEST PAGE. #{user.first_name}</h1>"
     end
 
     get '/sign-out/' do
