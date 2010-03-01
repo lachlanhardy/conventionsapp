@@ -62,11 +62,6 @@ module Application
     end
 
     before do
-      if params['openid.identity']
-        authenticate!
-        redirect request.path
-      end
-
       mobile_request? ? @mobile = ".mobile" : @mobile = ""
     end
 
@@ -80,6 +75,11 @@ module Application
 
     # homepage
     get '/' do
+      # Don't know why... but every request to openid is redirecting to "/"
+      if params['openid.identity']
+        authenticate!
+        redirect request.path
+      end
       deliver :index
     end
 
@@ -114,7 +114,7 @@ module Application
       if @user.save
         # Update our user object now we have a fully-fledged member
         warden.set_user(@user)
-        logout! :google
+        warden.logout :google
         redirect "/"
       else
         deliver :signup
