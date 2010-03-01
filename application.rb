@@ -54,7 +54,7 @@ module Application
 
       Warden::Manager.after_authentication do |user, auth, opts|
         if u = User.first(:google_identity_url => user.identity_url)
-          u
+          u # Whatever is returned from here is what is used as the user object
         else
           user.first_name = unarrayify(user.first_name)
           user.last_name = unarrayify(user.last_name)
